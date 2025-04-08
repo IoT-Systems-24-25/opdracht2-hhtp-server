@@ -1,6 +1,29 @@
 console.log("Hello from script.js");
 
 window.addEventListener(('load'), (event) => {
+    let checkbox = document.getElementById("checkbox-id");
+    let buttonOn = document.getElementById("button-on");
+    let buttonOff = document.getElementById("button-off");
+
+    buttonOn.addEventListener('click', () => {
+        fetch("index2.cgi", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: "extled1=on"
+        }).then(response => { response.text() ;}).then(text => {console.log('the server said', text);}).catch(error => {console.error('Error:', error);});
+        });
+
+        buttonOff.addEventListener('click', () => {
+            fetch("index2.cgi", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: "extled1=off"
+            }).then(response => { response.text() ;}).then(text => {console.log('the server said', text);}).catch(error => {console.error('Error:', error);});
+        });
 
     window.setInterval(
         (async () => {
@@ -8,7 +31,6 @@ window.addEventListener(('load'), (event) => {
             let response = await fetch("button.cgi");
             let text = await response.text();
             console.log(text);
-            let checkbox = document.getElementById("checkbox-id");
             if (text == "checked") {
                 checkbox.setAttribute("checked", "");
             }

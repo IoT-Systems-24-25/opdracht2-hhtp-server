@@ -146,6 +146,26 @@ void netCGI_ProcessData (uint8_t code, const char *data, uint32_t len) {
       else if (strcmp (var, "led7=on") == 0) {
         P2 |= 0x80;
       }
+		  else if (strcmp (var, "extled1=on") == 0) {
+        HAL_GPIO_WritePin(GPIOF, LED1_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOB, LED2_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOG, LED3_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOI, LED4_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOH, LED5_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOI, LED6_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOA, LED7_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOA, LED8_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled1=off") == 0) {
+        HAL_GPIO_WritePin(GPIOF, LED1_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOB, LED2_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOG, LED3_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOI, LED4_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOH, LED5_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOI, LED6_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOA, LED7_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOA, LED8_Pin, GPIO_PIN_RESET);
+      }
       else if (strcmp (var, "ctrl=Browser") == 0) {
         LEDrun = false;
       }

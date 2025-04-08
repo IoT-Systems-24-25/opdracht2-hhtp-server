@@ -37,8 +37,32 @@ extern uint64_t app_main_stk[];
 extern const osThreadAttr_t app_main_attr;
 
 
-#define EXT_SHLD_LED0_Pin GPIO_PIN_6
-#define EXT_SHLD_LED0_GPIO_Port GPIOF
+#define LED2_Pin GPIO_PIN_4
+#define LED2_GPIO_Port GPIOB
+#define LED7_Pin GPIO_PIN_15
+#define LED7_GPIO_Port GPIOA
+#define LED6_Pin GPIO_PIN_3
+#define LED6_GPIO_Port GPIOI
+#define LED4_Pin GPIO_PIN_0
+#define LED4_GPIO_Port GPIOI
+#define LED8_Pin GPIO_PIN_8
+#define LED8_GPIO_Port GPIOA
+#define LED3_Pin GPIO_PIN_7
+#define LED3_GPIO_Port GPIOG
+#define SW4_Pin GPIO_PIN_7
+#define SW4_GPIO_Port GPIOF
+#define LED1_Pin GPIO_PIN_6
+#define LED1_GPIO_Port GPIOF
+#define SW1_Pin GPIO_PIN_10
+#define SW1_GPIO_Port GPIOF
+#define SW2_Pin GPIO_PIN_9
+#define SW2_GPIO_Port GPIOF
+#define SW4F8_Pin GPIO_PIN_8
+#define SW4F8_GPIO_Port GPIOF
+#define POT_Pin GPIO_PIN_0
+#define POT_GPIO_Port GPIOA
+#define LED5_Pin GPIO_PIN_6
+#define LED5_GPIO_Port GPIOH
 
 
 /* Exported macro ------------------------------------------------------------*/
