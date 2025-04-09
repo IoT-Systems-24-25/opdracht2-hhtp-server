@@ -261,7 +261,7 @@ window.addEventListener(('load'), (event) => {
         }), 3000);
 
 
-    document.getElementById("toggle-button").onclick = async () => {
+    document.getElementById("-togglebutton").onclick = async () => {
         let response = await fetch("test.cgi",
             {
                 method: "POST",
