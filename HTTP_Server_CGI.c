@@ -148,22 +148,50 @@ void netCGI_ProcessData (uint8_t code, const char *data, uint32_t len) {
       }
 		  else if (strcmp (var, "extled1=on") == 0) {
         HAL_GPIO_WritePin(GPIOF, LED1_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOB, LED2_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOG, LED3_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOI, LED4_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOH, LED5_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOI, LED6_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOA, LED7_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(GPIOA, LED8_Pin, GPIO_PIN_SET);
       }
 			else if (strcmp (var, "extled1=off") == 0) {
         HAL_GPIO_WritePin(GPIOF, LED1_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled2=on") == 0) {
+				HAL_GPIO_WritePin(GPIOB, LED2_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled2=off") == 0) {
 				HAL_GPIO_WritePin(GPIOB, LED2_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled3=on") == 0) {
+				HAL_GPIO_WritePin(GPIOG, LED3_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled3=off") == 0) {
 				HAL_GPIO_WritePin(GPIOG, LED3_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled4=on") == 0) {
+				HAL_GPIO_WritePin(GPIOI, LED4_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled4=off") == 0) {
 				HAL_GPIO_WritePin(GPIOI, LED4_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled5=on") == 0) {
+				HAL_GPIO_WritePin(GPIOH, LED5_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled5=off") == 0) {
 				HAL_GPIO_WritePin(GPIOH, LED5_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled6=on") == 0) {
+				HAL_GPIO_WritePin(GPIOI, LED6_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled6=off") == 0) {
 				HAL_GPIO_WritePin(GPIOI, LED6_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled7=on") == 0) {
+				HAL_GPIO_WritePin(GPIOA, LED7_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled7=off") == 0) {
 				HAL_GPIO_WritePin(GPIOA, LED7_Pin, GPIO_PIN_RESET);
+      }
+			else if (strcmp (var, "extled8=on") == 0) {
+				HAL_GPIO_WritePin(GPIOA, LED8_Pin, GPIO_PIN_SET);
+      }
+			else if (strcmp (var, "extled8=off") == 0) {
 				HAL_GPIO_WritePin(GPIOA, LED8_Pin, GPIO_PIN_RESET);
       }
       else if (strcmp (var, "ctrl=Browser") == 0) {
@@ -401,6 +429,36 @@ uint32_t netCGI_Script (const char *env, char *buf, uint32_t buflen, uint32_t *p
 		
 		case 'z':
 			len = (uint32_t)sprintf (buf, &env[1], (get_button()&0x1)?"checked":"");
+
+		     
+		
+			break;
+		
+		case 'A':
+			len = (uint32_t)sprintf (buf, &env[1], HAL_GPIO_ReadPin(GPIOF, SW1_Pin) ?"":"checked");
+		   
+				if((HAL_GPIO_ReadPin(GPIOF, SW1_Pin) == GPIO_PIN_RESET)== true){
+					HAL_GPIO_WritePin(GPIOF, LED1_Pin, GPIO_PIN_SET);
+					HAL_GPIO_WritePin(GPIOB, LED2_Pin,GPIO_PIN_SET);
+				}else{
+					HAL_GPIO_WritePin(GPIOF, LED1_Pin, GPIO_PIN_RESET);
+					HAL_GPIO_WritePin(GPIOB, LED2_Pin,GPIO_PIN_RESET);
+				}
+		    
+			break;
+				
+		case 'B':
+			len = (uint32_t)sprintf (buf, &env[1], HAL_GPIO_ReadPin(GPIOF, SW2_Pin) ?"":"checked");
+		
+			break;
+		case 'C':
+			len = (uint32_t)sprintf (buf, &env[1], HAL_GPIO_ReadPin(GPIOF, SW4F8_Pin) ?"":"checked");
+			break;
+		
+		case 'D':
+		   len = (uint32_t)sprintf (buf, &env[1], HAL_GPIO_ReadPin(GPIOF, SW4_Pin) ?"":"checked");
+		
+		break;
 		
 		
   }
